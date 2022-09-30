@@ -1,6 +1,10 @@
+import os
 import requests
 import matplotlib.pyplot as plt
-import sys
+
+
+INTEGRATION_KEY = os.environ.get("INTEGRATION_TOKEN")
+DATABASE_ID = os.environ.get("TICKET_DATABASE_ID")
 
 
 class NotionSync:
@@ -31,7 +35,7 @@ class NotionSync:
 
 
 nsync = NotionSync()
-data = nsync.query_database(sys.argv[1], sys.argv[2])
+data = nsync.query_database(INTEGRATION_KEY, DATABASE_ID)
 ticket_stats = nsync.get_ticket_data(data)
 
 fig, ax = plt.subplots()
