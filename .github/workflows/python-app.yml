@@ -31,6 +31,8 @@ jobs:
         INTEGRATION_TOKEN: ${{ secrets.INTEGRATION_TOKEN }}
     - name: push graph image to repo
       run: |
+        git config --global user.name "pengwings"
+        git config --global user.email "brianyu012@gmail.com"
         git add graph.png
         git commit -m "updated graph"
         git push
