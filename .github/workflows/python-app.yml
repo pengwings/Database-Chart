@@ -25,7 +25,12 @@ jobs:
       run: |
         pip install requests
         pip install matplotlib==3.5.0
-    - name: Test with pytest
+    - name: Generate graph
       run: python NotionSync.py
       env:
         INTEGRATION_TOKEN: ${{ secrets.INTEGRATION_TOKEN }}
+    - name: push graph image to repo
+      run: |
+        git add graph.png
+        git commit -m "updated graph"
+        git push
