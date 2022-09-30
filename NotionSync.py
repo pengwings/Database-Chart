@@ -12,7 +12,7 @@ class NotionSync:
         pass
 
     def query_database(self):
-        database_url = "https://api.notion.com/v1/databases/" + DATABASE_ID + "/query"
+        database_url = DATABASE_ID
         response = requests.post(database_url,
                                  headers={"Authorization": f"{INTEGRATION_KEY}", "Notion-Version": "2022-06-28"})
         if response.status_code != 200:
