@@ -11,10 +11,10 @@ class NotionSync:
     def __init__(self):
         pass
 
-    def query_database(self, integration_token, database_id):
-        database_url = "https://api.notion.com/v1/databases/" + database_id + "/query"
+    def query_database(self):
+        database_url = "https://api.notion.com/v1/databases/" + DATABASE_ID + "/query"
         response = requests.post(database_url,
-                                 headers={"Authorization": f"{integration_token}", "Notion-Version": "2022-06-28"})
+                                 headers={"Authorization": f"{INTEGRATION_KEY}", "Notion-Version": "2022-06-28"})
         if response.status_code != 200:
             raise Exception(f'Response Status: {response.status_code}')
         else:
@@ -35,7 +35,7 @@ class NotionSync:
 
 
 nsync = NotionSync()
-data = nsync.query_database(INTEGRATION_KEY, DATABASE_ID)
+data = nsync.query_database()
 ticket_stats = nsync.get_ticket_data(data)
 
 fig, ax = plt.subplots()
