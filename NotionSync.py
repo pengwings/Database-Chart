@@ -11,8 +11,8 @@ class NotionSync:
     def __init__(self):
         pass
 
-    def query_database(self):
-        database_url = DATABASE_ID
+    def query_database(self, database_id):
+        database_url = "https://api.notion.com/v1/databases/" + database_id + "/query"
         response = requests.post(database_url,
                                  headers={"Authorization": f"{INTEGRATION_KEY}", "Notion-Version": "2022-06-28"})
         if response.status_code != 200:
@@ -35,7 +35,7 @@ class NotionSync:
 
 
 nsync = NotionSync()
-data = nsync.query_database()
+data = nsync.query_database("03e543a528c7412f9c5c9bc315320e98")
 ticket_stats = nsync.get_ticket_data(data)
 
 fig, ax = plt.subplots()

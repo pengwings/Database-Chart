@@ -29,4 +29,3 @@ jobs:
       run: python NotionSync.py
       env:
         INTEGRATION_TOKEN: ${{ secrets.INTEGRATION_TOKEN }}
-        DATABASE_ID: ${{ secrets.TICKET_DATABASE_ID }}
