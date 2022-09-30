@@ -3,8 +3,7 @@ import requests
 import matplotlib.pyplot as plt
 
 
-INTEGRATION_KEY = os.environ.get("INTEGRATION_TOKEN")
-DATABASE_ID = os.environ.get("TICKET_DATABASE_ID")
+INTEGRATION_KEY = os.environ["INTEGRATION_TOKEN"]
 
 
 class NotionSync:
